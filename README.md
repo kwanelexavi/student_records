@@ -84,8 +84,8 @@ A fully normalized relational database system designed to manage student records
 Clone this repository:
 
 
-git clone https://github.com/Kwanelexavi/student-records-db.git
-cd student-records-db
+git clone https://github.com/Kwanelexavi/student_records.git
+cd student_records
 
 Run the SQL script to create the database:
 
@@ -114,20 +114,23 @@ SHOW TABLES;
     WHERE s.student_id = 1;
 
 ## Aggregate Functions / Reports
-1.Count Students in Each Department
+# Count Students in Each Department
+
     SELECT d.name AS department_name, COUNT(s.student_id) AS student_count
     FROM departments d
     LEFT JOIN students s ON d.department_id = s.department_id
     GROUP BY d.department_id, d.name
     ORDER BY student_count DESC;
 
-2. Count Courses Offered by Each Instructor
+# Count Courses Offered by Each Instructor
+
     SELECT i.first_name, i.last_name, COUNT(c.course_id) AS course_count
     FROM instructors i
     LEFT JOIN courses c ON i.instructor_id = c.instructor_id
     GROUP BY i.instructor_id, i.first_name, i.last_name;
 
-3. Average Grade per Course
+# Average Grade per Course
+
     SELECT c.title AS course_title,
         AVG(CASE 
                 WHEN g.grade='A' THEN 4
@@ -142,14 +145,16 @@ SHOW TABLES;
     JOIN grades g ON e.enrollment_id = g.enrollment_id
     GROUP BY c.course_id, c.title;
 
-4. Total Credits Taken by Each Student
+# Total Credits Taken by Each Student
+   
     SELECT s.first_name, s.last_name, SUM(c.credits) AS total_credits
     FROM students s
     JOIN enrollments e ON s.student_id = e.student_id
     JOIN courses c ON e.course_id = c.course_id
     GROUP BY s.student_id, s.first_name, s.last_name;
 
-5. Attendance Summary for a Course
+# Attendance Summary for a Course
+   
     SELECT c.title AS course_title,
         SUM(CASE WHEN a.status='Present' THEN 1 ELSE 0 END) AS present_count,
         SUM(CASE WHEN a.status='Absent' THEN 1 ELSE 0 END) AS absent_count,
@@ -160,7 +165,8 @@ SHOW TABLES;
     JOIN attendance a ON cs.schedule_id = a.schedule_id
     GROUP BY c.course_id, c.title;
 
-6. Number of Students Enrolled in Each Semester
+# Number of Students Enrolled in Each Semester
+   
     SELECT sem.name AS semester_name, COUNT(DISTINCT e.student_id) AS student_count
     FROM semesters sem
     JOIN courses c ON sem.semester_id = c.semester_id
