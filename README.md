@@ -76,26 +76,29 @@ A fully normalized relational database system designed to manage student records
 
 ### Requirements
 
-- MySQL Server (>= 8.0)  
-- MySQL Workbench or command line client  
+
+  - MySQL Server (>= 8.0)  
+  - MySQL Workbench or command line client  
 
 ### Steps
 
-Clone this repository:
+# Clone this repository:
 
 
-git clone https://github.com/Kwanelexavi/student_records.git
-cd student_records
-
-Run the SQL script to create the database:
-
-mysql -u root -p < student_records_db.sql
+  git clone https://github.com/Kwanelexavi/student_records.git
+  cd student_records
 
 
-Verify tables:
+# Run the SQL script to create the database:
 
-USE student_records_db;
-SHOW TABLES;
+
+  mysql -u root -p < student_records.sql
+
+
+# Verify tables:
+
+  USE student_records_db;
+  SHOW TABLES;
 
 # use the test.sql for test data
 
