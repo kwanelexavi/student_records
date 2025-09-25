@@ -12,7 +12,7 @@ A fully normalized relational database system designed to manage student records
 - [Setup Instructions](#setup-instructions)  
 - [Sample Queries](#sample-queries)  
 - [Aggregate Functions / Reports](#aggregate-functions--reports)  
-- [Indexing and Performance](#indexing-and-performance)  
+- [Indexing and Performance] 
 
 ---
 
@@ -174,13 +174,6 @@ SHOW TABLES;
     GROUP BY sem.semester_id, sem.name;
 
 
-💡 Optional: You can create views for recurring reports:
-
-    CREATE VIEW department_student_count AS
-    SELECT d.name AS department_name, COUNT(s.student_id) AS student_count
-    FROM departments d
-    LEFT JOIN students s ON d.department_id = s.department_id
-    GROUP BY d.department_id, d.name;
 
 
 ## Kwanele Mntambo
